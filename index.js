@@ -13,6 +13,13 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 app.use(cors());
+
+// Configure CORS
+const corsOptions = {
+  origin: "https://main--codesconnect.netlify.app", // Your frontend URL
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // Enable set cookie on cross-origin requests
+};
 const userSocketMap = {};
 
 // Utility function to get all connected clients in a room
