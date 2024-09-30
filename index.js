@@ -20,6 +20,8 @@ const corsOptions = {
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, // Enable set cookie on cross-origin requests
 };
+
+app.use(cors(corsOptions));
 const userSocketMap = {};
 
 // Utility function to get all connected clients in a room
