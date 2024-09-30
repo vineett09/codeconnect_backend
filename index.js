@@ -14,7 +14,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 app.use(cors());
 
-// Configure CORS
+// Configure CORS options
 const corsOptions = {
   origin: "https://codesconnect.netlify.app", // Your frontend URL
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -22,6 +22,13 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+// Set Cross-Origin headers
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+  res.setHeader("Cross-Origin-Embedder-Policy", "same-origin");
+  next();
+});
 const userSocketMap = {};
 
 // Utility function to get all connected clients in a room
