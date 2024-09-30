@@ -16,7 +16,7 @@ app.use(cors());
 
 // Configure CORS
 const corsOptions = {
-  origin: "https://main--codesconnect.netlify.app", // Your frontend URL
+  origin: "https://codesconnect.netlify.app", // Your frontend URL
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, // Enable set cookie on cross-origin requests
 };
