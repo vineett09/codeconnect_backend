@@ -27,7 +27,7 @@ userSchema.pre("save", async function (next) {
   try {
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
-    console.log("Hashed Password:", this.password); // Log the hashed password
+    
     next();
   } catch (error) {
     next(error);
@@ -37,7 +37,7 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.matchPassword = async function (enteredPassword) {
   try {
     const isMatch = await bcrypt.compare(enteredPassword, this.password);
-    console.log("Password Match:", isMatch); // Log the comparison result
+   
     return isMatch;
   } catch (error) {
     throw new Error("Error comparing passwords");
